@@ -1,6 +1,6 @@
 import React from 'react'
 import './Banner.css'
-import myImg from "../Banner/sports.png"
+import myImg from "./sports.png"
 
 
 

@@ -12,16 +12,16 @@ export default function Carausal() {
       setSport((prevSport) => {
         // Cycle through sports
         switch (prevSport) {
-          case "hockey":
-            return "cricket";
-          case "cricket":
-            return "football";
-          case "football":
-            return "rugby";
-          case "rugby":
-            return "hockey";
+          case "Hockey":
+            return "Cricket";
+          case "Cricket":
+            return "Football";
+          case "Vollyball":
+            return "Tennis";
+          case "Tennis":
+            return "Hockey";
           default:
-            return "hockey";
+            return "Tennis";
         }
       });
     }, 3000); // Change sport every 3 seconds
@@ -58,10 +58,10 @@ export default function Carausal() {
         >
           <Typography variant="h4" gutterBottom sx={{textAlign:"left"}}>
           <pre>Plan your <span className="changingText">{sport} </span> tournament 
-          with <span className="changingText">Tournify</span></pre>
+          with <span className="changingText">GameHost</span></pre>
           </Typography>
           <Typography variant="body1" style={{ textAlign:"center" }}>
-          Millions of people around the world trust Challonge to manage their tournaments, host their events, and keep their competitive communities organized, informed, and playing together. Take on the Challonge challenge, and game on!<br></br>
+          Millions of people around the world trust Challonge to manage their tournaments, host their events, and keep their competitive communities organized, informed, and playing together. Take on the GameHost challenge, and game on!<br></br>
 
             
       

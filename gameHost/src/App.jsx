@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar/Navbar'
 import Sample from './Components/Sample/Sample'
 import Working from './Components/Working/Working'
 import Guide from './Components/Guide/Guide'
+import Footer from './Components/Footer/Footer'
 
 function App() {
  // const [count, setCount] = useState(0)
@@ -24,8 +25,10 @@ function App() {
      <Navbar/> 
      <Sample />
      <Working/>
-     <Format/>
+     <Format />
      <Guide />
+     <Format className="sec-format"/>
+     <Footer/>
     </div>
     </ThemeProvider>
   )

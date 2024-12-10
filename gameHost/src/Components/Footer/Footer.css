@@ -1,0 +1,38 @@
+.footer-container{
+
+    position: relative;
+    top: 1080px;
+    background-color: #f3f0f0; /* Light gray background */
+    color: black;
+    height: 260px;
+}
+
+.footer-link {
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.footer-link:hover {
+    color: #007bff; /* Change to your desired hover color */
+}
+
+.footer-container h6 {
+    font-weight: bold; /* Bold headings */
+    margin-bottom: 10px; /* Space below headings */
+}
+
+.footer-container a {
+    display: block; /* Makes links stack vertically */
+    margin-bottom: 5px; /* Adds space between links */
+}
+
+/* Optional: Add a top border to the footer */
+.footer-container {
+    border-top: 1px solid #ccc; /* Light gray border on top */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .footer-container {
+        padding: 20px 10px; /* Adjust padding for smaller screens */
+    }
+}

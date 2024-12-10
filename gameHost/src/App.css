@@ -2,3 +2,9 @@
 .container{
   display: flex;
 } */
+
+.sec-format{
+
+  position: relative;
+  top: 550px;
+}

@@ -9,9 +9,19 @@ import Sample from './Components/Sample/Sample'
 import Working from './Components/Working/Working'
 import Guide from './Components/Guide/Guide'
 import Footer from './Components/Footer/Footer'
+import Home from './Components/Home/Home'
+//import NavbarWithDrawer from './Components/AddTournament/NavbarWithDrawer'
+import { createBrowserRouter, RouterProvider} from 'react-router-dom'
 
 function App() {
- // const [count, setCount] = useState(0)
+  
+  const router = createBrowserRouter([
+    {
+      path:"/home",
+      element:<Home/>
+    }
+  ])
+
  const theme = createTheme({
   typography: {
     fontFamily: '"Montserrat", "Arial", sans-serif',
@@ -22,13 +32,9 @@ function App() {
     <div className="container">
        {/* <Banner/>
       <Login/>  */}
+     
      <Navbar/> 
-     <Sample />
-     <Working/>
-     <Format />
-     <Guide />
-     <Format className="sec-format"/>
-     <Footer/>
+    <RouterProvider router={router}/>     
     </div>
     </ThemeProvider>
   )

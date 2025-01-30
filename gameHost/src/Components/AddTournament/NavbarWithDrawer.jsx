@@ -1,45 +1,55 @@
-import React from 'react';
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import Sidebar from './Sidebar'; // Import Sidebar
-import Add from './Add';
+import React from "react";
+import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import Sidebar from "./Sidebar";
 
-const NavbarWithDrawer = () => {
+const NavbarWithDrawer = (props) => {
   return (
     <>
       {/* AppBar with Navbar */}
       <AppBar
-        position="sticky"
+        position="fixed"
         sx={{
-          display: 'flex',
-          bgcolor: 'white',
-          height: '60px',
-          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-          zIndex: 1301,
+          bgcolor: "white",
+          height: "60px",
+          boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+          zIndex: 1301, // Keeps it above sidebar
         }}
       >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          {/* GameHost Logo */}
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Typography variant="h6" sx={{ color: 'black' }}>
-              G a m e H o s t
-            </Typography>
-          </div>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "black",
+              fontWeight: "bold",
+              fontFamily: "Montserrat, Arial, sans-serif",
+            }}
+          >
+            G a m e H o s t
+          </Typography>
 
-          {/* Account Information */}
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            {/* Account Button */}
-            <Button color="inherit" sx={{ color: 'black' }}>
-              <AccountCircle sx={{ marginRight: '5px' }} />
-              Account Name
-            </Button>
-          </div>
+          <Button color="inherit" sx={{ color: "black" }}>
+            <AccountCircle sx={{ marginRight: "5px" }} />
+            Account Name
+          </Button>
         </Toolbar>
       </AppBar>
-      <div style={{ display: 'flex', gap: 400}}>
+
+      {/* Layout */}
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh", // Full viewport height
+          overflow: "hidden", // Prevent scrollbars
+          mt: "60px", // Account for AppBar height
+        }}
+      >
+        {/* Sidebar */}
         <Sidebar />
-        <Add/>
-      </div>
+
+        {props.children}
+        
+      </Box>
     </>
   );
 };

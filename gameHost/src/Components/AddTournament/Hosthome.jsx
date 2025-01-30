@@ -1,20 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthConntext';
+import axios from 'axios';
 
 export default function Hosthome() {
   const [entries, setEntries] = useState(0); // Initial entries set to 0
 
-  const tournamentDetails = {
-    name: 'Example Tournament',
-    sport: 'Football',
-    format: 'Group Knockout',
-    startDate: '2024-12-20',
-    endDate: '2024-12-25',
-    maxTeams: 16,
-  };
+  // const tournamentDetails = {
+  //   name: '',
+  //   sport: '',
+  //   format: '',
+  //   startDate: '',
+  //   endDate: '',
+  //   maxTeams: '',
 
-  const incrementEntries = () => {
-    setEntries((prevEntries) => prevEntries + 1);
+  // };
+
+  const { user } = useContext(AuthContext)
+  const [tournament, setResponse] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://localhost:44395/api/Tournaments/${user.userId}`);
+        if (response) {
+          setResponse(response.data);
+        }
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    if (user) {
+      fetchData();
+    }
+  }, [user]);
+
+
+
+  const navigate = useNavigate();
+  const entryClickHandler = () => {
+    navigate('/addtournament/addEntry');
+
   };
 
   return (
@@ -23,30 +51,33 @@ export default function Hosthome() {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: '100vh',
-        bgcolor: 'whitesmoke',
-        p: 2,
+        minHeight: '70vh',
+        //bgcolor: 'whitesmoke',
+        marginLeft: 75,
+        marginBottom: 16,
+        position: "fixed"
+
       }}
     >
-      <Card sx={{ maxWidth: 400, boxShadow: 3, borderRadius: 2, p: 2 }}>
+      <Card sx={{ maxWidth: 300, boxShadow: 3, borderRadius: 2, p: 2 }}>
         <CardContent>
           <Typography variant="h5" gutterBottom>
-            {tournamentDetails.name}
+            {tournament?.name}
           </Typography>
           <Typography variant="body1" gutterBottom>
-            <strong>Sport:</strong> {tournamentDetails.sport}
+            <strong>Sport:</strong> {tournament?.sportType}
           </Typography>
           <Typography variant="body1" gutterBottom>
-            <strong>Format:</strong> {tournamentDetails.format}
+            <strong>Format:</strong> {tournament?.format}
           </Typography>
           <Typography variant="body1" gutterBottom>
-            <strong>Start Date:</strong> {tournamentDetails.startDate}
+            <strong>Start Date:</strong> {tournament?.startDate}
           </Typography>
           <Typography variant="body1" gutterBottom>
-            <strong>End Date:</strong> {tournamentDetails.endDate}
+            <strong>End Date:</strong> {tournament?.endDate}
           </Typography>
           <Typography variant="body1" gutterBottom>
-            <strong>Max Teams:</strong> {tournamentDetails.maxTeams}
+            <strong>Max Teams:</strong> {tournament?.maxTeams}
           </Typography>
           <Typography variant="body1" gutterBottom>
             <strong>Entries:</strong> {entries}
@@ -55,8 +86,8 @@ export default function Hosthome() {
             variant="contained"
             color="primary"
             fullWidth
-            onClick={incrementEntries}
-            sx={{ mt: 2 }}
+            onClick={entryClickHandler}
+            sx={{ mt: 2, backgroundColor: 'purple' }}
           >
             Add Entry
           </Button>

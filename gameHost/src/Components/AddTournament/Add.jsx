@@ -6,8 +6,8 @@ import Details from './Details';
 export default function Add() {
   const navigate = useNavigate();
   const [shoeForm, setShoeForm] = useState(false);
-  const add = () => {
-    navigate('add');
+  const addButtonClickHandler = () => {
+    navigate('details');
     setShoeForm(true);
   }
 
@@ -17,12 +17,13 @@ useEffect(() => {
 
   return (
     <>
-      { shoeForm ?  <Details/> : <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '70vh', }}>
+      { shoeForm ?  <Details/> : <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '70vh',position:'fixed', marginLeft:550 }}>
         <Typography variant='h4' component="h1" gutterBottom >Add your Tournament</Typography>
+        <Typography variant='h5' component="h2">You can make a tournament one at a time</Typography> 
         <Button variant='contained' color='primary'
-          sx={{ padding: '10px 20px', backgroundColor: 'purple' }}
+          sx={{ padding: '10px 20px', backgroundColor: 'purple', mt: 2}}
           onClick={() => {
-            add();
+            addButtonClickHandler();
           }}>Add Tournaments</Button>
       </div>}
     </>

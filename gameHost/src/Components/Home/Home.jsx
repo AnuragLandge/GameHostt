@@ -6,10 +6,12 @@ import Guide from '../Guide/Guide'
 import './Home.css'
 import { formatData } from '../data'
 import Footer from '../Footer/Footer'
+import Navbar from '../Navbar/Navbar'
 
 export default function Home() {
   return (
     <div className='home-container'>
+      <Navbar/>
       <Sample />
       <Working />
       <Format data={formatData[0]} />

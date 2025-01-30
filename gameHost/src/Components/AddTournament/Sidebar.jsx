@@ -6,10 +6,21 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import SettingsIcon from '@mui/icons-material/Settings';
 import SportsIcon from '@mui/icons-material/Sports';
-
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
   const [extended, setExtended] = useState(false);
+  const navigate = useNavigate();
+
+  const showLive = () => {
+    console.log("clicked");
+    navigate('/addtournament/host-home');
+  };
+
+  const addTournament =()=>{
+
+    navigate('/addtournament/add');
+  }
 
   return (
     <div className={`sidebar-container ${extended ? 'extended' : ''}`}>
@@ -22,13 +33,14 @@ const Sidebar = () => {
         </div>
 
         {/* Sidebar Items */}
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={showLive}>
           <SportsEsportsIcon className="sidebar-icon" />
-          {extended && <p className="sidebar-text">Live Tournaments</p>}
+          {extended && <p className="sidebar-text">Your Tournaments</p>}
         </div>
-        <div className="sidebar-item">
+
+        <div className="sidebar-item" onClick={addTournament}>
           <SportsIcon className="sidebar-icon" />
-          {extended && <p className="sidebar-text">Participate</p>}
+          {extended && <p className="sidebar-text">Add tournament</p>}
         </div>
         <div className="sidebar-item">
           <HelpOutlineIcon className="sidebar-icon" />

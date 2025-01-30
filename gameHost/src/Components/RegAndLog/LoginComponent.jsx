@@ -1,13 +1,11 @@
 import React from 'react';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import { Modal, Box, TextField, Typography, Button, Link } from '@mui/material';
+import { useNavigate,} from 'react-router-dom';
+import { useRef,useContext } from 'react';
+import { AuthContext } from '../../Context/AuthConntext';
+import axios from 'axios';
+//import { Password } from '@mui/icons-material';
 
-
-// Styles for the Modal
 const modalStyle = {
   position: 'absolute',
   top: '50%',
@@ -21,56 +19,113 @@ const modalStyle = {
 };
 
 const LoginComponent = ({ open, handleClose }) => {
-
   const navigate = useNavigate();
-  const handleSignup=()=>{
+  const {login} = useContext(AuthContext);
+  const formRef = useRef(
+    {
+      uname: '',
+      email: '',
+      password: '',
+    }
+  );
 
-    navigate('/addtournament');
+  const loginClickHandler = async () => {
+    const {uname, email, password} = formRef.current;
+
+    try{
+
+      const response = await axios.post("https://localhost:44395/api/users/login", 
+        {
+          Username : uname,
+          Email: email,
+          PasswordHash : password,
+        }
+      );
+      console.log(response.data);
+
+      if(response.status == 200)
+      {
+        login(response.data);
+        handleClose();
+        navigate("/addtournament/help");
+      }
+    }catch (error) {
+      console.error('Error during login:', error);
+      alert('login failed. Please try again.');
+    }
   }
-  
+
+  const handleSignupRedirect = async(e) => {
+
+    navigate('/signup'); 
+  };
+  const handleChange = (e) =>{
+    const {name,value} = e.target;
+    formRef.current[name] = value;
+  }
 
   return (
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="signup-modal-title"
-      aria-describedby="signup-modal-description"
+      aria-labelledby="login-modal-title"
+      aria-describedby="login-modal-description"
     >
       <Box sx={modalStyle}>
-        <Typography id="signup-modal-title" variant="h5" component="h2" sx={{ mb: 2 }}>
+        <Typography id="login-modal-title" variant="h5" component="h2" sx={{ mb: 2 }}>
           Log in
         </Typography>
         <TextField
           fullWidth
+          name="uname"
+          label="Name"
+          onChange={handleChange}
+          variant="outlined"
+          margin="normal"
+          type="Text"
+        />
+        <TextField
+          fullWidth
+          name="email"
           label="Email"
+          onChange={handleChange}
           variant="outlined"
           margin="normal"
           type="email"
         />
         <TextField
           fullWidth
+          name="password"
           label="Password"
+          onChange={handleChange}
           variant="outlined"
           margin="normal"
           type="password"
         />
-        
         <Button
           fullWidth
           variant="contained"
           color="primary"
-          sx={{
-            mt: 2,
-            p: 1,
-            bgcolor: 'purple',
-          }}
-          onClick={handleSignup} // Closes the modal
+          onClick={loginClickHandler}
+          sx={{ mt: 2, p: 1, bgcolor: 'purple' }}
         >
           Login
         </Button>
+        <Typography variant="body2" align="center" sx={{ mt: 2 }}>
+          Don’t have an account?{' '}
+          <Link
+            component="button"
+            variant="body2"
+            onClick={handleSignupRedirect}
+            sx={{ color: 'purple', textDecoration: 'underline' }}
+          >
+            Sign Up
+          </Link>
+        </Typography>
       </Box>
     </Modal>
   );
 };
+
 
 export default LoginComponent;

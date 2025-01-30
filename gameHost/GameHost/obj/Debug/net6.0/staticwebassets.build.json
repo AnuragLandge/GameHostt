@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "NXqKTnE0siD0suYqfN7TeY5VqNfrCgW7FYzXDigN7gQ=",
+  "Source": "GameHost",
+  "BasePath": "_content/GameHost",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

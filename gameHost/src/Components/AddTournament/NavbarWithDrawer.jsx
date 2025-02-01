@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Sidebar from "./Sidebar";
+import { AuthContext } from "../../Context/AuthConntext";
+import { useContext } from "react";
 
 const NavbarWithDrawer = (props) => {
+
+  const { user } = useContext(AuthContext);
+ 
+  console.log("user in navbar: ", user);
   return (
     <>
       {/* AppBar with Navbar */}
@@ -30,7 +36,7 @@ const NavbarWithDrawer = (props) => {
 
           <Button color="inherit" sx={{ color: "black" }}>
             <AccountCircle sx={{ marginRight: "5px" }} />
-            Account Name
+            {user?.username || "Guest"}
           </Button>
         </Toolbar>
       </AppBar>
@@ -48,7 +54,7 @@ const NavbarWithDrawer = (props) => {
         <Sidebar />
 
         {props.children}
-        
+
       </Box>
     </>
   );

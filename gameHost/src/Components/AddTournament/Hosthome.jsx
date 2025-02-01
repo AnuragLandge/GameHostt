@@ -27,6 +27,8 @@ export default function Hosthome() {
         if (response) {
           setResponse(response.data);
         }
+        console.log("user:",user)
+        console.log("tournament:", tournament);
 
       } catch (error) {
         console.log(error);
@@ -62,7 +64,7 @@ export default function Hosthome() {
       <Card sx={{ maxWidth: 300, boxShadow: 3, borderRadius: 2, p: 2 }}>
         <CardContent>
           <Typography variant="h5" gutterBottom>
-            {tournament?.name}
+            {tournament?.name.toUpperCase()}
           </Typography>
           <Typography variant="body1" gutterBottom>
             <strong>Sport:</strong> {tournament?.sportType}
@@ -82,7 +84,7 @@ export default function Hosthome() {
           <Typography variant="body1" gutterBottom>
             <strong>Entries:</strong> {entries}
           </Typography>
-          <Button
+          {/* <Button
             variant="contained"
             color="primary"
             fullWidth
@@ -90,7 +92,7 @@ export default function Hosthome() {
             sx={{ mt: 2, backgroundColor: 'purple' }}
           >
             Add Entry
-          </Button>
+          </Button> */}
         </CardContent>
       </Card>
     </Box>

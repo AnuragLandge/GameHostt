@@ -44,7 +44,7 @@ const Sidebar = () => {
         </div>
         <div className="sidebar-item">
           <HelpOutlineIcon className="sidebar-icon" />
-          {extended && <p className="sidebar-text">Help</p>}
+          {extended && <p className="sidebar-text">Participate</p>}
         </div>
         <div className="sidebar-item">
           <TimelineIcon className="sidebar-icon" />

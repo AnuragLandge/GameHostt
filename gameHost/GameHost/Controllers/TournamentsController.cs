@@ -39,7 +39,7 @@ namespace GameHost.Controllers
           {
               return NotFound();
           }
-            var tournament = _context.Tournaments.FirstOrDefault((item)=>item.TournamentId==id);
+            var tournament = _context.Tournaments.FirstOrDefault((item)=>item.HostedBy==id);
 
             if (tournament == null)
             {
@@ -47,6 +47,23 @@ namespace GameHost.Controllers
             }
 
             return tournament;
+        }
+
+        [HttpGet("check/{id}")]
+        public async Task<ActionResult<Tournament>> checkTournament(int id)
+        {
+            if (_context.Tournaments == null)
+            {
+                return NotFound();
+            }
+            var tournament = _context.Tournaments.FirstOrDefault((item) => item.HostedBy == id);
+
+            if (tournament == null)
+            {
+                return Ok();
+            }
+
+            return Forbid("You are allowed to create only one tournament at a time");
         }
 
         // PUT: api/Tournaments/5

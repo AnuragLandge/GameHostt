@@ -30,6 +30,7 @@ export default function Details() {
       endDate: '',
       maxTeams: '',
 
+
     }
   )
 
@@ -59,6 +60,7 @@ export default function Details() {
         EndDate: endDate,
         MaxTeams: maxTeams,
         HostedBy: user.userId,
+        
       });
 
       if (response.status === 201) {

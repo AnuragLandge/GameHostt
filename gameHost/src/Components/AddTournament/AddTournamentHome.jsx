@@ -1,5 +1,7 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
+import { useContext } from 'react'
+import { AuthContext } from '../../Context/AuthConntext'
 
 const AddTournamentHome = () => {
   return (

@@ -3,40 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\controllers\\tournamentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\controllers\\tournamentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\controllers\\teammatchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\controllers\\teammatchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.Tournaments.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.TeamMatches.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.Users.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\helper\\teammatchhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\helper\\teammatchhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\models\\gamehostdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\models\\gamehostdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.Players.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\gamehost.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\gamehost.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\harsh\\AppData\\Local\\Temp\\fib21m31..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
+      "AbsoluteMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|c:\\users\\harsh\\desktop\\game host\\gamehost\\gamehost\\models\\teammatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60F25F3A-C1B1-419E-A505-B59E55E95A31}|GameHost\\GameHost.csproj|solutionrelative:gamehost\\models\\teammatch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,126 +25,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Program.cs",
-              "RelativeDocumentMoniker": "GameHost\\Program.cs",
-              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Program.cs",
-              "RelativeToolTip": "GameHost\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T10:36:21.286Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dbo.Users [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.Users.sql",
-              "ToolTip": "dbo.Users [Data]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-01-30T14:41:15.572Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "dbo.Tournaments [Data]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.Tournaments.sql",
-              "ToolTip": "dbo.Tournaments [Data]",
+              "Title": "dbo.TeamMatches [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.TeamMatches.sql",
+              "ToolTip": "dbo.TeamMatches [Data]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-01-30T14:37:41.748Z",
+              "WhenOpened": "2025-02-05T04:57:46.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TeamMatch.cs",
+              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Models\\TeamMatch.cs",
+              "RelativeDocumentMoniker": "GameHost\\Models\\TeamMatch.cs",
+              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Models\\TeamMatch.cs",
+              "RelativeToolTip": "GameHost\\Models\\TeamMatch.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-04T12:53:20.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TournamentsController.cs",
-              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Controllers\\TournamentsController.cs",
-              "RelativeDocumentMoniker": "GameHost\\Controllers\\TournamentsController.cs",
-              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Controllers\\TournamentsController.cs",
-              "RelativeToolTip": "GameHost\\Controllers\\TournamentsController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAmwCkAAABWAAAAAAAAAA==",
+              "Title": "TeamMatchesController.cs",
+              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Controllers\\TeamMatchesController.cs",
+              "RelativeDocumentMoniker": "GameHost\\Controllers\\TeamMatchesController.cs",
+              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Controllers\\TeamMatchesController.cs",
+              "RelativeToolTip": "GameHost\\Controllers\\TeamMatchesController.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAmwJoAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T13:35:26.206Z",
+              "WhenOpened": "2025-02-04T12:50:13.71Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "dbo.Players.sql",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.Players.sql",
-              "ToolTip": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/GameHostDb/True/SqlTable/dbo.Players.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-01-28T13:22:32.65Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "GameHost\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "GameHost\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAGwAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "TeamMatchHelper.cs",
+              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Helper\\TeamMatchHelper.cs",
+              "RelativeDocumentMoniker": "GameHost\\Helper\\TeamMatchHelper.cs",
+              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Helper\\TeamMatchHelper.cs",
+              "RelativeToolTip": "GameHost\\Helper\\TeamMatchHelper.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwB0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T10:35:16.537Z",
+              "WhenOpened": "2025-02-04T10:20:35.685Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GameHost.csproj",
-              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\GameHost.csproj",
-              "RelativeDocumentMoniker": "GameHost\\GameHost.csproj",
-              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\GameHost.csproj",
-              "RelativeToolTip": "GameHost\\GameHost.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-28T10:30:04.768Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "GameHostDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Models\\GameHostDbContext.cs",
-              "RelativeDocumentMoniker": "GameHost\\Models\\GameHostDbContext.cs",
-              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\Models\\GameHostDbContext.cs",
-              "RelativeToolTip": "GameHost\\Models\\GameHostDbContext.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAqwCQAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T10:32:09.686Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\appsettings.json",
-              "RelativeDocumentMoniker": "GameHost\\appsettings.json",
-              "ToolTip": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\appsettings.json",
-              "RelativeToolTip": "GameHost\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-28T10:28:30.338Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "fib21m31..sql",
-              "DocumentMoniker": "C:\\Users\\harsh\\AppData\\Local\\Temp\\fib21m31..sql",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\fib21m31..sql",
-              "ToolTip": "C:\\Users\\harsh\\AppData\\Local\\Temp\\fib21m31..sql",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\fib21m31..sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-01-28T10:23:13.159Z"
             }
           ]
         }

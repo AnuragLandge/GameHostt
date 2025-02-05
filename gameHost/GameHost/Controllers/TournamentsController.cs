@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GameHost.Models;
+using GameHost.DTO;
 
 namespace GameHost.Controllers
 {
@@ -30,6 +31,22 @@ namespace GameHost.Controllers
           }
             return await _context.Tournaments.ToListAsync();
         }
+        [HttpGet("participate/{id}")]
+        public async Task<ActionResult<IEnumerable<Tournament>>> GetListOfTournament(int id)
+        {
+            if (_context.Tournaments == null)
+            {
+                return NotFound();
+            }
+            var tournament = await _context.Tournaments.Where((item) => item.HostedBy != id).ToListAsync();
+
+            if (tournament == null)
+            {
+                return NotFound();
+            }
+
+            return tournament;
+        }
 
         // GET: api/Tournaments/5
         [HttpGet("{id}")]
@@ -40,7 +57,10 @@ namespace GameHost.Controllers
               return NotFound();
           }
             var tournament = _context.Tournaments.FirstOrDefault((item)=>item.HostedBy==id);
-
+            if(tournament != null)
+            {
+                tournament.TeamMatches = _context.TeamMatches.Where(item => item.TournamentId == tournament.TournamentId).ToList();
+            }
             if (tournament == null)
             {
                 return NotFound();
@@ -129,6 +149,52 @@ namespace GameHost.Controllers
 
         }
 
+        [HttpPost("endTournament")]
+        public async Task<ActionResult<Tournament>> EndTournament(WinnerDTO winner)
+        {
+            try
+            {
+                if (_context.Tournaments == null || _context.TeamMatches == null)
+                {
+                    return Problem("Entity set 'GameHostDbContext.Tournaments'  is null.");
+                }
+                var match = _context.TeamMatches.FirstOrDefault(item => item.MatchId == winner.MatchId);
+                if (match != null)
+                {
+                    var winnerTeamId = winner.ScoreA > winner.ScoreB ? winner.TeamAID : winner.TeamBID;
+                    match.WinnerTeamId = winnerTeamId;
+                    _context.Entry(match).State = EntityState.Modified;
+                    var tournamentWinner = new TournamentWinner
+                    {
+                        TournamentId = winner.TournamentId,
+                        WinnerTeamId = winnerTeamId,
+                    };
+                    _context.TournamentWinners.Add(tournamentWinner);
+                    var toremove = _context.TeamMatches.Where(item => item.TournamentId == winner.TournamentId);
+                    _context.TeamMatches.RemoveRange(toremove);
+
+                    var newTeams = _context.Teams.Where(item => item.TournamentId == winner.TournamentId).ToList();
+                    newTeams.ForEach(item => item.TournamentId = null);
+
+                    _context.Teams.UpdateRange(newTeams);
+
+                    var tournament = _context.Tournaments.First(item => item.TournamentId == winner.TournamentId);
+                    await _context.SaveChangesAsync();
+                    return NoContent();
+                }
+                else
+                {
+                    return NotFound("Match not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
+            }
+            
+            
+            return Ok();
+        }
         // DELETE: api/Tournaments/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTournament(int id)

@@ -13,7 +13,13 @@ import Details from './Components/AddTournament/Details';
 import Hosthome from './Components/AddTournament/Hosthome';
 import Add from './Components/AddTournament/Add'
 import AddTournamentHome from './Components/AddTournament/AddTournamentHome';
-import AddTeamEntry from './Components/AddTournament/AddTeamEntry';
+import AddTeamEntry from './Components/Participate/AddTeamEntry';
+import Participate from './Components/Participate/Participate';
+import Performance from './Components/TeamPerformance/Performance';
+import Generate from './Components/Team Matches/Generate';
+import Protect from './Components/ProtectRoute/Protect';
+//import Protect from './Components/ProtectRoute/Protect';
+
 
 // Layout component with Navbar
 const Layout = ({ withDrawer = false }) => (
@@ -31,32 +37,37 @@ function App() {
 
   return (
     <AuthProvider>
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Routes>
-         
-          <Route path="/" element={<Navigate to="/home" />} />
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Routes>
 
-          {/* Home Route */}
-          <Route path="home" element={<Home />} />
+            <Route path="/" element={<Navigate to="/home" />} />
 
-          {/* Routes with regular Navbar */}
-          <Route path="/" element={<Layout />}>
-            <Route path="signup" element={<SignupComponent />} />
-            <Route path="login" element={<LoginComponent />} />
-          </Route>
+            {/* Home Route */}
+            <Route path="home" element={<Home />} />
 
-          {/* Routes with Navbar + Drawer */}
-          <Route path="/addtournament" element={<Layout withDrawer/>}>
-            <Route path='help' element={<AddTournamentHome/>}/>
-            <Route path="add" element={<Add />} />
-            <Route path="add/details" element={<Details/>}/>
-            <Route path="host-home" element={<Hosthome />} />
-            <Route path='addEntry' element={<AddTeamEntry/>}/>
-          </Route>
-        </Routes>
-      </Router>
-    </ThemeProvider>
+            {/* Routes with regular Navbar */}
+            <Route path="/" element={<Layout />}>
+              <Route path="signup" element={<SignupComponent />} />
+              <Route path="login" element={<LoginComponent />} />
+            </Route>
+
+            {/* Routes with Navbar + Drawer */}
+            <Route path="/addtournament" element={<Protect/>}>
+              <Route element={<Layout withDrawer />}>
+                <Route path="help" element={<AddTournamentHome />} />
+                <Route path="add" element={<Add />} />
+                <Route path="add/details" element={<Details />} />
+                <Route path="host-home" element={<Hosthome />} />
+                <Route path="addEntry" element={<AddTeamEntry />} />
+                <Route path="participate" element={<Participate />} />
+                <Route path="performance" element={<Performance />} />
+                <Route path="generate" element={<Generate />} />
+              </Route>
+            </Route>
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </AuthProvider>
   );
 }

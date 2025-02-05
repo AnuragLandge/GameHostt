@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import TimelineIcon from '@mui/icons-material/Timeline';
-import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
 import SportsIcon from '@mui/icons-material/Sports';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,11 +17,19 @@ const Sidebar = () => {
     navigate('/addtournament/host-home');
   };
 
-  const addTournament =()=>{
-
+  const addTournament = () => {
     navigate('/addtournament/add');
   }
 
+  const participateClickHandler = () => {
+    navigate('/addtournament/participate');
+  }
+
+  const performanceClickHnadler = () => {
+      navigate('/addtournament/performance');
+  }
+
+  
   return (
     <div className={`sidebar-container ${extended ? 'extended' : ''}`}>
       {/* Sidebar Content */}
@@ -42,17 +50,17 @@ const Sidebar = () => {
           <SportsIcon className="sidebar-icon" />
           {extended && <p className="sidebar-text">Add tournament</p>}
         </div>
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={participateClickHandler}>
           <HelpOutlineIcon className="sidebar-icon" />
           {extended && <p className="sidebar-text">Participate</p>}
         </div>
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={performanceClickHnadler}>
           <TimelineIcon className="sidebar-icon" />
-          {extended && <p className="sidebar-text">Activity</p>}
+          {extended && <p className="sidebar-text">Team Performance</p>}
         </div>
         <div className="sidebar-item">
-          <SettingsIcon className="sidebar-icon" />
-          {extended && <p className="sidebar-text">Settings</p>}
+          <LogoutIcon className="sidebar-icon" />
+          {extended && <p className="sidebar-text">Log Out</p>}
         </div>
       </div>
     </div>

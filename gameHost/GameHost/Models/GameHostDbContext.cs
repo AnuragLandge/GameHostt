@@ -191,7 +191,7 @@ namespace GameHost.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__TeamMatch__TeamB__398D8EEE");
 
-                entity.HasOne(d => d.Tournament)
+                entity.HasOne(d => d.Tournaments)
                     .WithMany(p => p.TeamMatches)
                     .HasForeignKey(d => d.TournamentId)
                     .HasConstraintName("FK__TeamMatch__Tourn__37A5467C");

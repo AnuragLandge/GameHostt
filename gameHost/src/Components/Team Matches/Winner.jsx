@@ -18,7 +18,7 @@ export default function Winner(props) {
 
   return (
     <div className='winnerContainer'>
-      { tournament ? <Card key={tournamentId} sx={{ height: 250, marginX: 'auto', height: '350px', width: '50vw', boxShadow: 3, borderRadius: 2, p: 3, textAlign: 'center' }}>
+      { tournament ? <Card key={tournamentId} sx={{marginX: 'auto', height: '350px', width: '50vw', boxShadow: 3, borderRadius: 2, p: 3, textAlign: 'center' }}>
         <CardContent>
           <Typography variant='h4' sx={{ color: 'green', marginBottom: '20px' }}>Tournament Winner: {props.winner.teamName}</Typography>
           <Table>

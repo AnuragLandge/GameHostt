@@ -93,7 +93,7 @@ export default function Hosthome() {
           ))
         }
 
-      </Grid2> : <Typography variant='h6' color='grey'>You haven't created any tournaments</Typography>}
+      </Grid2> : <Typography variant='h6' sx={{ justifyContent:'center'}} color='grey'>You haven't created any tournaments</Typography>}
 
       <Box sx={{ display: 'flex', justifyContent: 'center', width: "100%", pr: 5, mt: 2 }}>
         <Button

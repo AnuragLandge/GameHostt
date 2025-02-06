@@ -4,6 +4,11 @@ import { useState, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import './Carausal.css'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import image1 from './1.jpg';
+import image2 from './2.jpg';
+import image3 from './3.jpg';
+import image4 from './4.jpg';
+
 
 export default function Carausal() {
   const [sport, setSport] = useState("hockey");
@@ -31,10 +36,10 @@ export default function Carausal() {
   }, []);
 
   const imageList = [
-    "https://assets.challonge.com/_next/static/media/esports1.4fc43c13.jpg",
-    "https://assets.challonge.com/_next/static/media/tennis.820f3de9.jpg",
-    "https://assets.challonge.com/_next/static/media/soccer.85d58ba7.jpg",
-    "https://assets.challonge.com/_next/static/media/pickleball.a47a4378.jpg",
+    image1,
+    image2,
+    image3,
+    image4
   ];
 
   return (

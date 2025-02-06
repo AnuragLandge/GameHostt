@@ -67,7 +67,7 @@ namespace GameHost.Controllers
                 var matches = TeamMatchHelper.GenerateKnockoutRounds(teams, id);
                 _context.TeamMatches.AddRange(matches);
                 _context.SaveChanges();
-                var x = await _context.TeamMatches
+                var x = await _context.TeamMatches.Where(item => item.TournamentId == id)
                     .Include(item => item.TeamANavigation)
                     .Include(item => item.TeamBNavigation).ToListAsync();
                 return Ok(x);

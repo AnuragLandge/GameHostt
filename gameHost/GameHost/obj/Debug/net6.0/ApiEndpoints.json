@@ -448,6 +448,26 @@
   },
   {
     "ContainingType": "GameHost.Controllers.TournamentsController",
+    "Method": "GetTournamentCarousel",
+    "RelativePath": "api/Tournaments/carousel",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[GameHost.Models.Tournament, GameHost, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "GameHost.Controllers.TournamentsController",
     "Method": "checkTournament",
     "RelativePath": "api/Tournaments/check/{id}",
     "HttpMethod": "GET",

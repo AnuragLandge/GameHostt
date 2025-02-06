@@ -31,6 +31,21 @@ namespace GameHost.Controllers
           }
             return await _context.Tournaments.ToListAsync();
         }
+        [HttpGet("carousel")]
+        public async Task<ActionResult<IEnumerable<Tournament>>> GetTournamentCarousel()
+        {
+            if (_context.Tournaments == null)
+            {
+                return NotFound();
+            }
+
+            var tournaments = await _context.Tournaments.Where(item => item.Status == "false").Take(5).ToListAsync();
+                                           
+
+            return Ok(tournaments);
+        }
+
+
         [HttpGet("participate/{id}")]
         public async Task<ActionResult<IEnumerable<Tournament>>> GetListOfTournament(int id)
         {
@@ -78,7 +93,7 @@ namespace GameHost.Controllers
                 var tournamentId = tournament.TournamentId;
                 var user = _context.Users.FirstOrDefault(item => item.UserId == tournament.HostedBy);
                 var winner = _context.TournamentWinners.FirstOrDefault(item => item.TournamentId == tournamentId);
-                var winnerteam = winner == null ? null : await _context.Teams.FirstAsync(item => item.TeamId == winner.WinnerId);
+                var winnerteam = winner == null ? null : await _context.Teams.FirstAsync(item => item.TeamId == winner.WinnerTeamId);
                 var totalMathes = await _context.TeamMatches.Where(item => item.TournamentId == tournamentId).ToListAsync();
 
                 var performance = new PerformanceDTO
@@ -112,13 +127,12 @@ namespace GameHost.Controllers
             {
                 return NotFound();
             }
-            var winnerId = _context.TournamentWinners.FirstOrDefault(item => item.TournamentId == id)?.WinnerId;
-            if (winnerId == null) 
+            var winnerT = _context.TournamentWinners.FirstOrDefault(item => item.TournamentId == id);
+            if (winnerT == null) 
             {
-                winnerId = 4;
-                //return Problem("Tournament winner not available");
+                return Problem("Tournament winner not available");
             }
-            var winnerTeam = _context.Teams.First(item => item.TeamId == winnerId);
+            var winnerTeam = _context.Teams.First(item => item.TeamId == winnerT.WinnerTeamId);
             var tournamentWinner = new TournamentWinnerDTO
             {
                 TournamentName = tournament.Name,

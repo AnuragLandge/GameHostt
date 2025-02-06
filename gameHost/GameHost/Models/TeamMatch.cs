@@ -16,9 +16,9 @@ namespace GameHost.Models
         public int? ScoreTeamB { get; set; }
         public int? WinnerTeamId { get; set; }
 
-        public virtual Team TeamANavigation { get; set; } = null!;
+        public virtual Team TeamANavigation { get; set; }
         
-        public virtual Team TeamBNavigation { get; set; } = null!;
+        public virtual Team TeamBNavigation { get; set; }
         [JsonIgnore]
         public virtual Tournament Tournament { get; set; } = null!;
         public virtual Team? WinnerTeam { get; set; }

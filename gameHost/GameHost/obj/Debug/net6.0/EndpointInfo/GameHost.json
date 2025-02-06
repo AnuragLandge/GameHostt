@@ -763,24 +763,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tournament"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tournament"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tournament"
-                }
-              }
-            }
+            "description": "Success"
           }
         }
       },
@@ -825,6 +808,52 @@
         }
       },
       "delete": {
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Tournaments/getPerformanceData/{hostId}": {
+      "get": {
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "name": "hostId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Tournaments/getTournamentByTournamentId/{id}": {
+      "get": {
         "tags": [
           "Tournaments"
         ],
@@ -1354,12 +1383,13 @@
             "format": "int32",
             "nullable": true
           },
-          "maxPlayers": {
-            "type": "integer",
-            "format": "int32"
-          },
           "captainName": {
             "type": "string",
+            "nullable": true
+          },
+          "maxPlayers": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           },
           "tournament": {
@@ -1480,9 +1510,6 @@
           },
           "team": {
             "$ref": "#/components/schemas/Team"
-          },
-          "tournament": {
-            "$ref": "#/components/schemas/Tournament"
           }
         },
         "additionalProperties": false
@@ -1525,6 +1552,10 @@
           "hostedBy": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
             "nullable": true
           },
           "hostedByNavigation": {
@@ -1609,9 +1640,6 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "tournament": {
-            "$ref": "#/components/schemas/Tournament"
           },
           "winnerPlayer": {
             "$ref": "#/components/schemas/Player"

@@ -19,8 +19,8 @@ namespace GameHost.Models
         public int TeamId { get; set; }
         public string TeamName { get; set; } = null!;
         public int? TournamentId { get; set; }
-        public int MaxPlayers { get; set; }
-        public string CaptainName { get; set; }
+        public string? CaptainName { get; set; }
+        public int? MaxPlayers { get; set; }
 
         public virtual Tournament? Tournament { get; set; }
         public virtual ICollection<Player> Players { get; set; }

@@ -18,6 +18,7 @@ import Participate from './Components/Participate/Participate';
 import Performance from './Components/TeamPerformance/Performance';
 import Generate from './Components/Team Matches/Generate';
 import Protect from './Components/ProtectRoute/Protect';
+import LogoutComponent from './Components/RegAndLog/LogoutComponent';
 //import Protect from './Components/ProtectRoute/Protect';
 
 
@@ -63,6 +64,7 @@ function App() {
                 <Route path="participate" element={<Participate />} />
                 <Route path="performance" element={<Performance />} />
                 <Route path="generate" element={<Generate />} />
+                <Route path='logout' element={<LogoutComponent/>}/>
               </Route>
             </Route>
           </Routes>

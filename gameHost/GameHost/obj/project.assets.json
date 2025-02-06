@@ -11180,9 +11180,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\GameHost.csproj",
+      "projectUniqueName": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\GameHost.csproj",
       "projectName": "GameHost",
-      "projectPath": "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\GameHost.csproj",
+      "projectPath": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\GameHost.csproj",
       "packagesPath": "C:\\Users\\harsh\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\obj\\",
       "projectStyle": "PackageReference",
@@ -11278,13 +11278,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
-    }
-  ]
+  }
 }

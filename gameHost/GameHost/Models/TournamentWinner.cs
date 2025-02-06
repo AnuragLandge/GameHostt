@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace GameHost.Models
 {
@@ -10,6 +11,7 @@ namespace GameHost.Models
         public int? WinnerTeamId { get; set; }
         public int? WinnerPlayerId { get; set; }
 
+        [JsonIgnore]
         public virtual Tournament Tournament { get; set; } = null!;
         public virtual Player? WinnerPlayer { get; set; }
         public virtual Team? WinnerTeam { get; set; }

@@ -85,15 +85,39 @@ namespace GameHost.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-          if (_context.Users == null)
-          {
-              return Problem("Entity set 'GameHostDbContext.Users'  is null.");
-          }
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            if (_context.Users == null)
+            {
+                return StatusCode(StatusCodes.Status503ServiceUnavailable, "Database context is unavailable.");
+            }
 
-            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            // Check if the username already exists
+            bool userExistsName = await _context.Users.AnyAsync(u => u.Username == user.Username);
+
+            if (userExistsName)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, new { message = "Username already exists." });
+            }
+
+            bool userExistsEmail = await _context.Users.AnyAsync(u => u.Email == user.Email);
+
+            if (userExistsEmail)
+            {
+                return StatusCode(StatusCodes.Status409Conflict, new { message = "Email address already exists." });
+            }
+
+            try
+            {
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+
+                return StatusCode(StatusCodes.Status201Created, user);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { message = "An unexpected error occurred.", details = ex.Message });
+            }
         }
+
 
         [HttpPost("login")]
         public async Task<ActionResult<User>> ReturnUser(User user)

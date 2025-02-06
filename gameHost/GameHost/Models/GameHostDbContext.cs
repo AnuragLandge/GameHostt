@@ -149,6 +149,10 @@ namespace GameHost.Models
             {
                 entity.Property(e => e.TeamId).HasColumnName("TeamID");
 
+                entity.Property(e => e.CaptainName)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.TeamName).HasMaxLength(100);
 
                 entity.Property(e => e.TournamentId).HasColumnName("TournamentID");
@@ -173,7 +177,7 @@ namespace GameHost.Models
 
                 entity.Property(e => e.ScoreTeamB).HasDefaultValueSql("((0))");
 
-                entity.Property(e => e.Stage).HasMaxLength(20);
+                entity.Property(e => e.Stage).HasMaxLength(50);
 
                 entity.Property(e => e.TournamentId).HasColumnName("TournamentID");
 
@@ -191,7 +195,7 @@ namespace GameHost.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__TeamMatch__TeamB__398D8EEE");
 
-                entity.HasOne(d => d.Tournaments)
+                entity.HasOne(d => d.Tournament)
                     .WithMany(p => p.TeamMatches)
                     .HasForeignKey(d => d.TournamentId)
                     .HasConstraintName("FK__TeamMatch__Tourn__37A5467C");
@@ -252,6 +256,11 @@ namespace GameHost.Models
                 entity.Property(e => e.SportType).HasMaxLength(50);
 
                 entity.Property(e => e.StartDate).HasColumnType("date");
+
+                entity.Property(e => e.Status)
+                    .HasMaxLength(10)
+                    .HasDefaultValueSql("('False')")
+                    .IsFixedLength();
 
                 entity.HasOne(d => d.HostedByNavigation)
                     .WithMany(p => p.Tournaments)

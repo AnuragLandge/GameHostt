@@ -8,18 +8,18 @@ import { useContext } from "react";
 const NavbarWithDrawer = (props) => {
 
   const { user } = useContext(AuthContext);
- 
+
   console.log("user in navbar: ", user);
   return (
     <>
-      {/* AppBar with Navbar */}
+
       <AppBar
         position="fixed"
         sx={{
           bgcolor: "white",
           height: "60px",
           boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-          zIndex: 1301, // Keeps it above sidebar
+          zIndex: 1301,
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -41,16 +41,16 @@ const NavbarWithDrawer = (props) => {
         </Toolbar>
       </AppBar>
 
-      {/* Layout */}
+
       <Box
         sx={{
           display: "flex",
-          height: "100vh", // Full viewport height
-          overflow: "hidden", // Prevent scrollbars
-          mt: "60px", // Account for AppBar height
+          height: "100vh",
+          overflow: "hidden",
+          mt: "60px",
         }}
       >
-        {/* Sidebar */}
+
         <Sidebar />
 
         {props.children}

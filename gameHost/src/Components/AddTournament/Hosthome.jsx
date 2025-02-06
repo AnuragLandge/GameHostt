@@ -1,21 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Card, CardContent, Typography, Button, Box } from '@mui/material';
+import { Card, CardContent, Typography, Button, Box, Grid2 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthConntext';
 import axios from 'axios';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function Hosthome() {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
-  const [tournament, setTournament] = useState(null);
-
+  const [tournamenList, setTournamentList] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`https://localhost:44395/api/Tournaments/${user.userId}`);
         if (response) {
-          setTournament(response.data);
+          setTournamentList(response.data);
         }
       } catch (error) {
         console.log(error);
@@ -26,73 +26,86 @@ export default function Hosthome() {
     }
   }, [user]);
 
-  const generateClickHandler = async () => {
+  const generateClickHandler = async (tournament) => {
     try {
       const response = await axios.get(`https://localhost:44395/api/TeamMatches/generate/${tournament.tournamentId}`);
       if (response.status === 200) {
         navigate(`/addtournament/generate?tournamentId=${tournament.tournamentId}`);
       }
     } catch (error) {
+      toast.warning(
+        <div>
+          <Typography variant="body2">Not sufficient teams to generate matches</Typography>
+        </div>,
+        {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeButton: false,
+        }
+      );
       console.log(error);
     }
   };
 
-  const ManageClickHandler =()=>{
+  const ManageClickHandler = (tournament) => {
     navigate(`/addtournament/generate?tournamentId=${tournament.tournamentId}`);
   }
 
+  const createButtonClickHandler = () => {
+    navigate('/addtournament/add');
+  }
   return (
-    <>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          minHeight: '70vh',
-          marginLeft: 75,
-          marginBottom: 16,
-          position: "fixed"
-        }}
-      >
-        {tournament ? (
-          <Card sx={{ maxWidth: 300, boxShadow: 3, borderRadius: 2, p: 2 }}>
-            <CardContent>
-              <Typography variant="h5" gutterBottom>
-                {tournament?.name.toUpperCase()}
-              </Typography>
-              <Typography variant="body1"><strong>Sport:</strong> {tournament?.sportType}</Typography>
-              <Typography variant="body1"><strong>Format:</strong> {tournament?.format}</Typography>
-              <Typography variant="body1"><strong>Start Date:</strong> {tournament?.startDate}</Typography>
-              <Typography variant="body1"><strong>End Date:</strong> {tournament?.endDate}</Typography>
-              <Typography variant="body1"><strong>Max Teams:</strong> {tournament?.maxTeams}</Typography>
+    <div className='divStyle'>
+      <ToastContainer />
+      {tournamenList.length > 0 ?
+      <Grid2 container spacing={3} justifyContent="center" sx={{ width: "85vw", marginTop: '20px', marginRight: "auto", marginLeft: 'auto' }}>
+        {
+          tournamenList.map(tournament => (
+            <Grid2 item xs={12} sm={6} md={4} lg={3} key={tournament.tournamentId}>
+              <Card sx={{ height: '350px', maxWidth: 300, boxShadow: 3, borderRadius: 2, p: 2 }}>
+                <CardContent>
+                  {tournament.status === 'true' ? <Typography variant='h4' sx={{ fontWeight: 'bold', }}>Tournament Ended!</Typography> : null}
+                  <Typography variant="h5" gutterBottom>
+                    {tournament?.name.toUpperCase()}
+                  </Typography>
+                  <Typography variant="body1"><strong>Sport:</strong> {tournament?.sportType}</Typography>
+                  <Typography variant="body1"><strong>Format:</strong> {tournament?.format}</Typography>
+                  <Typography variant="body1"><strong>Start Date:</strong> {tournament?.startDate}</Typography>
+                  <Typography variant="body1"><strong>End Date:</strong> {tournament?.endDate}</Typography>
+                  <Typography variant="body1"><strong>Max Teams:</strong> {tournament?.maxTeams}</Typography>
 
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                onClick={ tournament.teamMatches.length > 0 ? ManageClickHandler : generateClickHandler}
-                sx={{ mt: 2, backgroundColor: 'purple' }}
-              >
-                {tournament.teamMatches.length > 0 ? 'Manage' : 'Generate Matches'}
-              </Button>
-            </CardContent>
-          </Card>
-        ) : (
-          <Typography variant='h6' color='grey'>You haven't created any tournaments</Typography>
-        )}
-      </Box>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                    disabled={tournament.status === 'true'}
+                    onClick={() => {
+                      tournament.status === 'false' && tournament.teamMatches.length > 0 ? ManageClickHandler(tournament) : generateClickHandler(tournament)}
+                    }
+                    sx={{ mt: 2, backgroundColor: 'purple' }}
+                  >
+                    {tournament.status === 'false'  && tournament.teamMatches.length > 0? 'Manage' : 'Generate Matches'}
+                  </Button>
+                </CardContent>
+              </Card>
+            </Grid2>
+          ))
+        }
 
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: "100%", pr: 5, mt: 2 }}>
+      </Grid2> : <Typography variant='h6' color='grey'>You haven't created any tournaments</Typography>}
+
+      <Box sx={{ display: 'flex', justifyContent: 'center', width: "100%", pr: 5, mt: 2 }}>
         <Button
           variant="contained"
           color="primary"
-          onClick={ManageClickHandler}
-          sx={{ backgroundColor: 'purple', width: 150, height: 40 }}
+          //disabled={tournament ? tournament.status === 'false' : true}
+          onClick={createButtonClickHandler}
+          sx={{ backgroundColor: 'purple', width: 200, height: 40 }}
         >
-          Manage
+          Create Tournament
         </Button>
       </Box>
-
-    </>
+    </div>
   );
 }

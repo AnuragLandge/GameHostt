@@ -44,8 +44,13 @@ namespace GameHost.Helper
                 matches.Add(new TeamMatch
                 {
                     TeamA = teams[count - 1].TeamId,
+                    TeamB = teams[count - 1].TeamId,
                     WinnerTeam = teams[count - 1],
                     Stage = round.ToString(),
+                    TournamentId = tournamentId,
+                    ScoreTeamA = 0,
+                    ScoreTeamB = 0,
+                    WinnerTeamId = teams[count - 1].TeamId,
                 });
             }
             return matches;

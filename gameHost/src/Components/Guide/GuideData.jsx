@@ -38,7 +38,7 @@ export default function GuideData() {
           marginTop: '50px'
         }}>
           <InputLabel id="select-label" sx={{
-            color: '#fff'
+            color: 'white'
           }}>Choice</InputLabel>
           <Select
             labelId="demo-simple-select-filled-label"

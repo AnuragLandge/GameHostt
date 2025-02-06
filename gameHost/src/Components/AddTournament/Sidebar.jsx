@@ -7,8 +7,11 @@ import TimelineIcon from '@mui/icons-material/Timeline';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SportsIcon from '@mui/icons-material/Sports';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthConntext';
 
 const Sidebar = () => {
+  const {logout} = useContext(AuthContext);
   const [extended, setExtended] = useState(false);
   const navigate = useNavigate();
 
@@ -28,7 +31,11 @@ const Sidebar = () => {
   const performanceClickHnadler = () => {
       navigate('/addtournament/performance');
   }
-
+  
+  const logOutClickhandler = () =>{
+    logout();
+    navigate('/addtournament/login');
+  }
   
   return (
     <div className={`sidebar-container ${extended ? 'extended' : ''}`}>
@@ -58,7 +65,7 @@ const Sidebar = () => {
           <TimelineIcon className="sidebar-icon" />
           {extended && <p className="sidebar-text">Team Performance</p>}
         </div>
-        <div className="sidebar-item">
+        <div className="sidebar-item" onClick={logOutClickhandler}>
           <LogoutIcon className="sidebar-icon" />
           {extended && <p className="sidebar-text">Log Out</p>}
         </div>

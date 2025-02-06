@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace GameHost.Models
 {
@@ -18,6 +19,7 @@ namespace GameHost.Models
         public string PasswordHash { get; set; } = null!;
 
         public virtual ICollection<Player> Players { get; set; }
+
         public virtual ICollection<Tournament> Tournaments { get; set; }
         public virtual ICollection<UserTournamentAccess> UserTournamentAccesses { get; set; }
     }

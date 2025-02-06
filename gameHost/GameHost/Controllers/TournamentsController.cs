@@ -38,7 +38,7 @@ namespace GameHost.Controllers
             {
                 return NotFound();
             }
-            var tournament = await _context.Tournaments.Where((item) => item.HostedBy != id).ToListAsync();
+            var tournament = await _context.Tournaments.Where((item) => item.HostedBy != id).Include(item => item.TeamMatches).ToListAsync();
 
             if (tournament == null)
             {
@@ -50,25 +50,85 @@ namespace GameHost.Controllers
 
         // GET: api/Tournaments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Tournament>> GetTournament(int id)
+        public async Task<ActionResult> GetTournament(int id)
         {
-          if (_context.Tournaments == null)
-          {
-              return NotFound();
-          }
-            var tournament = _context.Tournaments.FirstOrDefault((item)=>item.HostedBy==id);
-            if(tournament != null)
+            if (_context.Tournaments == null)
             {
-                tournament.TeamMatches = _context.TeamMatches.Where(item => item.TournamentId == tournament.TournamentId).ToList();
+                return NotFound();
             }
+            var tournament = _context.Tournaments.Where((item) => item.HostedBy == id)
+                .Include(item => item.TeamMatches)
+                .ToList();
+
             if (tournament == null)
             {
                 return NotFound();
             }
 
-            return tournament;
+            return Ok(tournament);
         }
 
+        [HttpGet("getPerformanceData/{hostId}")]
+        public async Task<ActionResult> GetPerformanceData(int hostId)
+        {
+            var dto = new List<PerformanceDTO>();
+            var tournaments = await _context.Tournaments.Where(item => item.HostedBy == hostId).ToListAsync();
+            foreach (var tournament in tournaments)
+            {
+                var tournamentId = tournament.TournamentId;
+                var user = _context.Users.FirstOrDefault(item => item.UserId == tournament.HostedBy);
+                var winner = _context.TournamentWinners.FirstOrDefault(item => item.TournamentId == tournamentId);
+                var winnerteam = winner == null ? null : await _context.Teams.FirstAsync(item => item.TeamId == winner.WinnerId);
+                var totalMathes = await _context.TeamMatches.Where(item => item.TournamentId == tournamentId).ToListAsync();
+
+                var performance = new PerformanceDTO
+                {
+
+                    Format = tournament.Format,
+                    HostedBy = user.Username,
+                    TotalMatches = totalMathes.Count(),
+                    TournamentId = tournament.TournamentId,
+                    TournamentName = tournament.Name,
+                    Type = tournament.SportType,
+                    WinnerTeamCapton = winnerteam == null ? "" : winnerteam.CaptainName,
+                    WinnerTeamName = winnerteam == null ? "" : winnerteam.TeamName,
+                    Status = tournament.Status,
+                };
+                dto.Add(performance);
+            }
+
+            return Ok(dto);
+        }
+
+        [HttpGet("getTournamentByTournamentId/{id}")]
+        public async Task<ActionResult> GetTournamentByTournamentId(int id)
+        {
+            if (_context.Tournaments == null)
+            {
+                return NotFound();
+            }
+            var tournament = _context.Tournaments.First((item) => item.TournamentId == id);
+            if (tournament == null)
+            {
+                return NotFound();
+            }
+            var winnerId = _context.TournamentWinners.FirstOrDefault(item => item.TournamentId == id)?.WinnerId;
+            if (winnerId == null) 
+            {
+                winnerId = 4;
+                //return Problem("Tournament winner not available");
+            }
+            var winnerTeam = _context.Teams.First(item => item.TeamId == winnerId);
+            var tournamentWinner = new TournamentWinnerDTO
+            {
+                TournamentName = tournament.Name,
+                TotalTeams = _context.Teams.Where(item => item.TournamentId == id).Count(),
+                HostedBy = _context.Users.First(item => item.UserId == tournament.HostedBy).Username,
+                WinnerTeamName = winnerTeam.TeamName,
+                Capton = winnerTeam.CaptainName
+            };
+            return Ok(tournamentWinner);
+        }
         [HttpGet("check/{id}")]
         public async Task<ActionResult<Tournament>> checkTournament(int id)
         {
@@ -76,14 +136,30 @@ namespace GameHost.Controllers
             {
                 return NotFound();
             }
-            var tournament = _context.Tournaments.FirstOrDefault((item) => item.HostedBy == id);
+            var tournaments = _context.Tournaments.Where((item) => item.HostedBy == id).ToList();
 
-            if (tournament == null)
+
+            if (tournaments == null)
             {
                 return Ok();
             }
-
-            return Forbid("You are allowed to create only one tournament at a time");
+            else
+            {
+                bool shouldAllow = true;
+                tournaments.ForEach(item =>
+                {
+                    if (item.Status.Equals("false"))
+                    {
+                        shouldAllow = false;
+                        return;
+                    }
+                });
+                if (shouldAllow)
+                {
+                    return Ok();
+                }
+            }
+            return Problem("You are allowed to create only one tournament at a time");
         }
 
         // PUT: api/Tournaments/5
@@ -170,8 +246,8 @@ namespace GameHost.Controllers
                         WinnerTeamId = winnerTeamId,
                     };
                     _context.TournamentWinners.Add(tournamentWinner);
-                    var toremove = _context.TeamMatches.Where(item => item.TournamentId == winner.TournamentId);
-                    _context.TeamMatches.RemoveRange(toremove);
+                    //var toremove = _context.TeamMatches.Where(item => item.TournamentId == winner.TournamentId);
+                    //_context.TeamMatches.RemoveRange(toremove);
 
                     var newTeams = _context.Teams.Where(item => item.TournamentId == winner.TournamentId).ToList();
                     newTeams.ForEach(item => item.TournamentId = null);
@@ -179,6 +255,8 @@ namespace GameHost.Controllers
                     _context.Teams.UpdateRange(newTeams);
 
                     var tournament = _context.Tournaments.First(item => item.TournamentId == winner.TournamentId);
+                    tournament.Status = "true";
+                    _context.Entry(tournament).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
                     return NoContent();
                 }

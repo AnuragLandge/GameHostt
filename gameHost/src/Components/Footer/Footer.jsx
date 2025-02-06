@@ -1,52 +1,34 @@
 import React from 'react';
-import { Typography, Link, Box, Grid, Grid2, Stack } from '@mui/material';
+import { Typography, Box, Link } from '@mui/material';
+import { Facebook, Instagram, Twitter, GitHub } from '@mui/icons-material';
 import './Footer.css';
-
 
 const Footer = () => {
     return (
-        <div className="footer-container" sx={{padding:"10px 10px" }}>
-            <Box sx={{ backgroundColor: '#211835', color: "white", padding: '40px 20px' }}>
-                <Grid2 container spacing={4} sx={{ justifyContent: "space-between", padding:"25px, height: 260px;"}}>
-                    <Grid2 item xs={12} md={3}>
-                        <Typography variant="h6" gutterBottom>  
-                            <Typography variant="h6" sx={{ color: 'White' }}> G a m e H o s t</Typography>
-                             Manage your gaming competition the way
-                            <Typography variant="h6">you want</Typography>
-                        </Typography>
-                    </Grid2>
-                    <Grid2 item xs={12} md={3}>
-                        <Typography variant="h6" gutterBottom>
-                            Products
-                        </Typography>
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Tournament software</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Website builder</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">API</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Platform</Link>
-                    </Grid2>
-                    <Grid2 item xs={12} md={3}>
-                        <Typography variant="h6" gutterBottom>
-                            Solutions
-                        </Typography>
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Educational organizations</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Agencies</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Game Developers</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Brands</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Tournament Admins</Link>
-                    </Grid2>
-                    <Grid2 item xs={12} md={3}>
-                        <Typography variant="h6" gutterBottom>
-                            Legal information
-                        </Typography>
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Terms & policies</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Terms of use</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Privacy policy</Link><br />
-                        <Link href="#" color="inherit" underline="hover" className="footer-link">Cookies policy</Link>
-                    </Grid2>
-                </Grid2>
+        <div className="footer-container">
+            <Typography variant="body1">
+                Follow GameHost and stay updated!
+            </Typography>
+            <Box className="social-icons">
+                <Facebook className="social-icon" />
+                <Instagram className="social-icon" />
+                <Twitter className="social-icon" />
+                <GitHub className="social-icon" />
             </Box>
+            <Box className="footer-links">
+                <Link href="#" className="footer-link">Privacy Policy</Link>
+                <Link href="#" className="footer-link">Terms of Service</Link>
+                <Link href="#" className="footer-link">Contact Us</Link>
+            </Box>
+            <Typography variant="body2" className="footer-copy">
+                &copy; 2024-2025 GameHost. All Rights Reserved.
+            </Typography>
         </div>
     );
 };
 
+
 export default Footer;
+
+
+

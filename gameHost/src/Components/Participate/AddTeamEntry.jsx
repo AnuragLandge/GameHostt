@@ -38,7 +38,7 @@ const AddTeamEntry = () => {
             closeButton: false,
           }
         );
-        navigate("/addtournament/performance");
+        //navigate("/addtournament/performance");
       }
     } catch (error) {
       if (error.response && error.response.status === 409) {

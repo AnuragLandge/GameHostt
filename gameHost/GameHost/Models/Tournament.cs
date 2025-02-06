@@ -26,6 +26,7 @@ namespace GameHost.Models
         public int? MaxTeams { get; set; }
         public bool IsSinglePlayer { get; set; }
         public int? HostedBy { get; set; }
+        public string Status { get; set; } = null!;
 
         public virtual User? HostedByNavigation { get; set; }
         public virtual ICollection<PlayerMatch> PlayerMatches { get; set; }

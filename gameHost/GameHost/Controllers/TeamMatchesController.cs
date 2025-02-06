@@ -67,7 +67,9 @@ namespace GameHost.Controllers
                 var matches = TeamMatchHelper.GenerateKnockoutRounds(teams, id);
                 _context.TeamMatches.AddRange(matches);
                 _context.SaveChanges();
-                var x = await _context.TeamMatches.ToListAsync();
+                var x = await _context.TeamMatches
+                    .Include(item => item.TeamANavigation)
+                    .Include(item => item.TeamBNavigation).ToListAsync();
                 return Ok(x);
                 
             }
@@ -154,7 +156,7 @@ namespace GameHost.Controllers
                     return NotFound("Database is not properly initialized.");
                 }
 
-                var winnerTeams = _context.TeamMatches.Where(item => item.WinnerTeamId != null && item.TournamentId == id).ToList();
+                var winnerTeams = _context.TeamMatches.Where(item => item.WinnerTeamId != null && item.TournamentId == id && item.Stage == (round - 1).ToString()).ToList();
                 var winnerTeamIdList = winnerTeams.Select(item => item.WinnerTeamId);
                 var newteams = _context.Teams.Where(item => winnerTeamIdList.Contains(item.TeamId)).ToList();
                 var generatedMatches = GenerateKnockoutRounds(newteams, id, round);

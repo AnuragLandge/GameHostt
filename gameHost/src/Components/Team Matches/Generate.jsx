@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import "./TeamMatches.css"
 import axios from 'axios';
+import Winner from './Winner';
 
 const Generate = () => {
   const location = useLocation();
@@ -27,7 +28,7 @@ const Generate = () => {
   }, [])
 
   const endTournamentClickHandler = async(match) => {
-    const response = await axios.post(`https://localhost:44395/api/tournament/endTournament`, {
+    const response = await axios.post(`https://localhost:44395/api/tournaments/endTournament`, {
         MatchId: match.matchId,
         TournamentId: match.tournamentId,
         ScoreA: +teamA,
@@ -42,7 +43,7 @@ const Generate = () => {
     setMatches(response.data);
   }
 
-  const onStartClickHandler = async (match) => {
+  const StartOrFinishClickHandler = async (match) => {
     if (match.visible) {
       try {
         const api = isFinalmatch ? 'Tournaments/endTournament' : 'TeamMatches/winner' ;
@@ -54,6 +55,10 @@ const Generate = () => {
           TeamAID: match.teamA,
           TeamBID: match.teamB
         });
+        
+        const winnerteam = +teamA > +teamB ? match.teamANavigation : match.teamBNavigation;
+        
+        isFinalmatch && setTournamentWinner({...winnerteam, tournamentId: match.tournamentId});
 
         const array = [...matches];
         const exits = array.find(item => item.matchId === response.data.matchId);
@@ -94,7 +99,10 @@ const Generate = () => {
   }
 
   return (
-    <div className='divStyle'>
+    <>
+    {tournamentWinner 
+      ? <Winner winner={tournamentWinner}/> 
+      : <div className='divStyle'>
       {matches.length > 0 ? (
         <Grid2 container spacing={3} justifyContent="center" sx={{ width: "85vw", marginTop: '20px', marginRight: "auto", marginLeft: 'auto' }}>
           {matches.map((match) => (
@@ -123,7 +131,7 @@ const Generate = () => {
                         color="primary"
                         fullWidth
                         onClick={((e) => {
-                          onStartClickHandler(match);
+                          StartOrFinishClickHandler(match);
                         })}
                         sx={{ mt: 2 }}
                       >
@@ -147,6 +155,9 @@ const Generate = () => {
         onClick={nextRoundClicHandler}
         sx={{ mt: 2, width: '200px', marginRight: 'auto', marginLeft: 'auto', display:"flex", justifyContent:"center"}} disabled={!enableNextRound}>Initiate Next Round</Button>
     </div>
+    }
+    </>
+    
   )
 }
 

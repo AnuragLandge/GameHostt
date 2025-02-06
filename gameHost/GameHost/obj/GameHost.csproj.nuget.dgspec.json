@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\GameHost.csproj": {}
+    "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\GameHost.csproj": {}
   },
   "projects": {
-    "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\GameHost.csproj": {
+    "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\GameHost.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\GameHost.csproj",
+        "projectUniqueName": "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\GameHost.csproj",
         "projectName": "GameHost",
-        "projectPath": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\GameHost.csproj",
+        "projectPath": "C:\\Users\\harsh\\Desktop\\Game Host\\GameHost\\GameHost\\GameHost.csproj",
         "packagesPath": "C:\\Users\\harsh\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\harsh\\Desktop\\Game Host\\gameHost\\GameHost\\obj\\",
         "projectStyle": "PackageReference",
